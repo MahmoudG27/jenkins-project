@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh "pytest 01-jenkins-basics/"        
+                sh "pytest 01-jenkins-basics/"
             }
         }    
         // stage('Deployment') {
