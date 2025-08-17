@@ -6,16 +6,30 @@ pipeline {
     // }
     
     stages {
+        // stage('linting and formatting'){
+        //     stages {
+        //         stage('lint'){
+        //            steps {
+        //                echo "linting files"
+        //            }
+        //         }
+        //         stage('fomat'){
+        //            steps {
+        //                echo "formatting files"
+        //            }
+        //         }
+        //     }
+        // }
         stage('linting and formatting'){
-            stages {
+            parallel {
                 stage('lint'){
                    steps {
-                       echo "linting files"
+                       sh "sleep 60"
                    }
                 }
                 stage('fomat'){
                    steps {
-                       echo "formatting files"
+                       sh "sleep 60"
                    }
                 }
             }
