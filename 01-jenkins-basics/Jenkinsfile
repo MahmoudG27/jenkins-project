@@ -6,6 +6,20 @@ pipeline {
     // }
     
     stages {
+        stage('linting and formatting'){
+            stages {
+                stage('lint'){
+                   setps {
+                       echo "linting files"
+                   }
+                }
+                stage('fomat'){
+                   setps {
+                       echo "formatting files"
+                   }
+                }
+            }
+        }
         stage('Setup') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'ubuntu-cred', usernameVariable: 'myuser', passwordVariable: 'mypassword')]) {
