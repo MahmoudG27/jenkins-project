@@ -53,14 +53,14 @@ pipeline {
                 sh "pytest 01-jenkins-basics/"
             }
         }    
-        // stage('Deployment') {
-        //     input {
-        //         message "Do you want to proceed further?"
-        //         ok "Yes"
-        //     }
-        //     steps {
-        //         echo "Running Deployment"      
-        //     }
-        // }     
+        stage('Deployment') {
+            input {
+                message "Do you want to proceed further?"
+                ok "Yes"
+            }
+            steps {
+                echo "Running Deployment"      
+            }
+        }     
     }
 }
