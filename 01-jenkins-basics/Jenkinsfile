@@ -9,12 +9,12 @@ pipeline {
         stage('linting and formatting'){
             stages {
                 stage('lint'){
-                   setps {
+                   steps {
                        echo "linting files"
                    }
                 }
                 stage('fomat'){
-                   setps {
+                   steps {
                        echo "formatting files"
                    }
                 }
