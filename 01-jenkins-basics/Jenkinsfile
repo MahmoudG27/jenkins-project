@@ -4,6 +4,11 @@ pipeline {
     // environment {
     //     SERVER_CREDS = credentials('ubuntu-cred')
     // }
+    parameters {
+        string(name: 'SERVICE_NAME', defaultValue: 'payment', description: 'Service to deploy')
+        choice(name: 'ENVIRONMENT', choices: ['dev', 'staging', 'prod'], description: 'Target environment')
+        booleanParam(name: 'RUN_MIGRATIONS', defaultValue: false, description: 'Run DB migrations?')
+    }
     
     stages {
         // stage('linting and formatting'){
@@ -24,12 +29,12 @@ pipeline {
             parallel {
                 stage('lint'){
                    steps {
-                       sh "sleep 60"
+                       sh "sleep 5"
                    }
                 }
                 stage('fomat'){
                    steps {
-                       sh "sleep 60"
+                       sh "sleep 5"
                    }
                 }
             }
