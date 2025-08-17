@@ -9,8 +9,10 @@ pipeline {
         stage('Setup') {
             steps {
                 withcredentials([usernamePassword(credentialsId: 'ubuntu-cred', usernameVariable: 'serverUser', passwordVariable: 'serverPassword')]) {
+                    sh '''
                     echo ${serverUser}
                     echo ${serverPassword}
+                    '''
                 }
                 // echo "my creds: ${SERVER_CREDS}"
                 // echo "my user: ${SERVER_CREDS_USR}"
