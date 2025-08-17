@@ -1,23 +1,20 @@
 pipeline {
     agent any
 
-    environment {
-        SERVER_CREDS = credentials('ubuntu-cred')
-    }
+    // environment {
+    //     SERVER_CREDS = credentials('ubuntu-cred')
+    // }
     
     stages {
         stage('Setup') {
             steps {
-            //     withCredentials([usernamePassword(credentialsId: 'server-creds', usernameVariable: "myuser", passwordVariable: "mypassword")]) {
-
-            //         sh '''
-            //         echo ${myuser}
-            //         echo ${mypassword}
-            //         '''
-            //     }
-                echo "my creds: ${SERVER_CREDS}"
-                echo "my user: ${SERVER_CREDS_USR}"
-                echo "my password: ${SERVER_CREDS_PSW}"
+                withcredentials([usernamePassword(credentialsId: 'ubuntu-cred', usernameVariable: 'user', passwordVariable: 'password')]) {
+                    echo ${user}
+                    echo ${password}
+                }
+                // echo "my creds: ${SERVER_CREDS}"
+                // echo "my user: ${SERVER_CREDS_USR}"
+                // echo "my password: ${SERVER_CREDS_PSW}"
                 sh "pip install -r 01-jenkins-basics/requirements.txt"            
             }
         }
